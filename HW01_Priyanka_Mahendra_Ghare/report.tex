@@ -1,0 +1,209 @@
+\documentclass[11pt,english]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{fullpage}
+\usepackage[showframe=false,margin=1in]{geometry}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{url}
+\usepackage{fancyvrb}
+
+\usepackage{graphicx}
+\usepackage{listings}
+
+\parindent=0pt
+\setlength{\parskip}{1em}
+\lstset{
+  basicstyle=\fontsize{10}{13}\selectfont\ttfamily
+}
+
+
+\begin{document}
+
+\title{CSC 4780/6780 \\
+Fall 2022\\ Homework 1}
+\author{First Last \\ last@gsu.edu}
+\maketitle
+
+This homework is due at 11:59 pm on Sunday, Aug 28.  It must be uploaded to iCollege by then.  No credit will be given for late submissions.  A solution will be released by noon on Monday,  Aug 29.
+
+It is a very bad idea to put this off until the last minute.
+
+This homework is worth 10 points.
+
+\section{Purpose}
+
+In every data science job,  you get two things on the first day: an email address and a laptop.  Your first task is to get the laptop ready for work.
+
+The second thing you do is get a table of data that you are expected to understand.  Here we will be using Pandas and SQLite to explore some data.
+
+\section{Study}
+
+Read pages 71 -  133 of \textit{Practical Data Science with Python}.
+
+Optional: We will be using pandas all semester. You should get comfortable with it.  Here is a good video tutorial: 
+\url{https://youtu.be/PcvsOaixUh8}
+
+\section{Install python3}
+
+If you have not already,  install python on your computer.  You will be using this all semester.   
+Python version 3.10 has been released,  but anything after 3.7 is fine.  You can check your version 
+on the command line like this: 
+
+\begin{Verbatim}
+python3 --version
+\end{Verbatim}
+
+\section{Install some python tools and libraries}
+
+\begin{Verbatim}
+pip3 install pandas
+pip3 install numpy
+pip3 install scikit-learn
+pip3 install matplotlib
+pip3 install black
+\end{Verbatim}
+
+(If you prefer to use conda,  that is OK with me.)
+
+\section{JupyterLab}
+
+Jupyter notebooks allow an author to mix text (in Markdown) and code (in Python)
+in a single document that you can work with in a browser.   I will use them from time to 
+time to send you annotated examples.
+
+Install JupyterLab on your machine.
+
+\begin{Verbatim}
+pip3 install jupyterlab
+\end{Verbatim}
+
+Your homework directory includes  \texttt{main.ipnb}. In that directory,  start jupyter-lab:
+\begin{Verbatim}
+jupyter-lab
+\end{Verbatim}
+
+In the pane on the  your browser,  you should see \texttt{main.ipnb}.   Study and run the code in each cell.
+
+\textbf{Replace the question marks in this sentence: The mean waist size is $??$ meters.} (2 points)
+
+\section{Apply for GitHub Copilot}
+
+As a student,  you get free access to Copilot (which is used from an extension in VS Code).  
+You should apply: Copilot will make your life easier,  but it is also an astonishing example of what machine learning can do.
+
+\url{https://copilot.github.com}
+
+\section{Write some python using pandas}
+
+There is a file called \texttt{make\_report.py}.  When you fill in the missing lines, you will be able to run it like this:
+
+\begin{Verbatim}
+python3 make_report.py employees.csv 
+\end{Verbatim}
+
+Then, it will print a report like this:
+\begin{Verbatim}
+*** Basics ***
+Rows: 10,000
+Columns: 6
+
+*** Columns ***
+employee_id: int64
+	Range: 1712 - 9998838
+gender: object
+	Missing in 82 rows (0.8%)
+		4917: m
+		4907: f
+		36: F
+		23: M
+		19: male
+		16: female
+height: float64
+	Range: 1.34 - 2.07
+	Mean: 1.71
+	Standard deviation: 0.11
+	Median: 1.71
+waist: float64
+	Range: 0.47 - 2.18
+	Mean: 1.21
+	Standard deviation: 0.23
+	Median: 1.19
+salary: float64
+	Missing in 70 rows (0.7%)
+	Range: 297.0 - 140902.0
+	Mean: 63033.98
+	Standard deviation: 20093.83
+	Median: 63078.50
+dob: object
+	Range: 1945-01-01 - 1984-12-21
+death: object
+	Range: 1960-03-20 - 2022-06-12
+\end{Verbatim}
+
+DO NOT LOOP THROUGH ALL 10,000 ROWS.  Let pandas do that for you.
+
+Do this work by yourself.   Stackoverflow is OK.   A hint from another student is OK.  Looking at another student's code is \emph{not} OK.
+
+\textbf{Include the completed  \texttt{make\_report.py} in the zip file.   Also copy your \texttt{series\_report}  function here:} (4 points)
+\begin{lstlisting}[language=Python]
+def series_report(
+    series, is_ordinal=False, is_continuous=False, is_categorical=False
+):
+...
+\end{lstlisting}
+
+In my solution,  this function is 18 lines long.
+
+\section{Write some SQL}
+
+There is an \texttt{employees.db} file containing similar data in sqlite3 format.
+
+In one SQL query,  get the mean height of all employees who have a salary greater than \$35,000.
+
+\textbf{Write your SQL query and the result here:} (2 points)
+\begin{lstlisting}
+sqlite> 
+\end{lstlisting}
+
+\section{Install LaTeX and build a PDF}
+
+There are a lot of ways to install a TeX/LaTeX processing system.  I use TeX Live (\url{https://www.tug.org/texlive/}).
+
+After installing it, you will be able to render this document into PDF like this:
+
+\begin{Verbatim}
+pdflatex report.tex
+\end{Verbatim}
+
+Open \texttt{report.pdf} to make sure it looks good. (Did you put your name and email in the \texttt{author} section?)
+
+\textbf{Include that pdf in the zip file you turn in.} (2 points)
+
+\section{Tidy up}
+
+Before you zip up this directory and submit it, clean things up for the graders:
+
+\begin{itemize}
+\item Rename the folder.  First name "Derek"? Last name "Zoolander"? The folder should be \texttt{HW01\_Zoolander\_Derek}.
+\item Reformat your code with black: \texttt{black make\_report.py}.
+\item Delete intermediate files from pdflatex: \texttt{report.aux},  \texttt{report.log},  \texttt{report.synctex.gz}.
+\end{itemize}
+
+When you zip this directory, it should be called \texttt{HW01\_Zoolander\_Derek.zip}
+
+Our amazing TAs have to check homeworks from a lot of students, so this sort of tidiness is very important for \emph{every assignment}.  If your
+ code doesn't immediately run as-is,  you will get points off.  If we can't find your name on the folder or the PDF, you will get points off.  
+ 
+The most common problem is that in your code you have the path to your data file is something like \texttt{"C://home/zoolander/gsu/hw1/employees.csv"}.    
+Leave the data file in the directory and use a relative path like \texttt{"employees.csv"}.
+
+\section{Looking ahead}
+
+Want to look ahead a little?  We will be doing data visualization with matplotlib next.  Here is a good video tutorial:
+\url{https://youtu.be/UO98lJQ3QGI}
+
+\end{document}

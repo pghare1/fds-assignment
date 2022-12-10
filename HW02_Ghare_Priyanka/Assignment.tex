@@ -1,0 +1,57 @@
+\documentclass[11pt,english]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Packages
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{fullpage}
+\usepackage[showframe=false,margin=1in]{geometry}
+\usepackage{amsmath, amsthm, amssymb}
+\usepackage[linesnumbered,ruled,vlined]{algorithm2e}
+\usepackage{url}
+\usepackage{fancyvrb}
+
+\usepackage{graphicx}
+\usepackage{listings}
+
+\parindent=0pt
+\setlength{\parskip}{1em}
+\lstset{
+  basicstyle=\fontsize{10}{13}\selectfont\ttfamily
+}
+
+
+\begin{document}
+
+\title{CSC 4780/6780 \\
+Fall 2022\\ Homework 2}
+\maketitle
+
+
+\section{Derive a gradient}
+
+Let $f: R^3 \rightarrow R$ be given by
+
+$$f(x, y,z) = y\sin(5x) + e^{yz} + \ln{z}$$
+
+What is the gradient?
+
+Answer: $\nabla f =\begin{bmatrix}  5 y \cos(5x) & z e^{yz} +\sin(5x) &  y e^{yz} + \frac{1}{z} \end{bmatrix}$
+
+Here is the sympy script that will solve this:
+\begin{verbatim}
+import sympy
+
+x, y, z = sympy.symbols('x y z')
+f = y * sympy.sin(5 * x) + sympy.exp(y * z) + sympy.log(z)
+
+df_x = sympy.diff(f, x)
+df_y = sympy.diff(f, y)
+df_z = sympy.diff(f, z)
+print(f"df/dx = {df_x}")
+print(f"df/dy = {df_y}")
+print(f"df/dz = {df_z}")
+\end{verbatim}
+
+
+\end{document}
