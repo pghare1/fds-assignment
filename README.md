@@ -1,7 +1,7 @@
 
-# FDS Assigment
+# FDS Assignment
 
-## Assigment List
+## Assignment List
 - HW01: Python, Pandas, LaTeX, SQLite
 - HW02: Data visualizations and gradients
 - HW03: Linear Regression and Gradient Descent
